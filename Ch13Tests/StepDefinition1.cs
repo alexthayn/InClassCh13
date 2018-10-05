@@ -20,6 +20,13 @@ namespace Ch13Tests
             calc.EnterNumber(number);
         }
 
+        [Given("I enter (.*) into the calculator")]
+        public void GivenIHaveEnteredNumbersIntoTheCalculator(int number)
+        {
+            var calc = getCalculator();
+            calc.EnterNumber(number);
+        }
+
         private static Calculator getCalculator()
         {
             Calculator calc;
@@ -52,8 +59,29 @@ namespace Ch13Tests
             calc.Add();
         }
 
+        [When("I press subtract")]
+        public void WhenIPressSubtract()
+        {
+            var calc = getCalculator();
+            calc.Subtract();
+        }
+
+        [When("I press multiply")]
+        public void WhenIPressMultiply()
+        {
+            var calc = getCalculator();
+            calc.Multiply();
+        }
+
         [Then("the result should be (.*) on the screen")]
         public void ThenTheResultShouldBe(int expectedResult)
+        {
+            var calc = getCalculator();
+            expectedResult.Should().Be(calc.Result);
+        }
+
+        [Then("the result should be (.*) on screen")]
+        public void ThenTheResultShouldBeOnScreen(int expectedResult)
         {
             var calc = getCalculator();
             expectedResult.Should().Be(calc.Result);

@@ -28,13 +28,37 @@ namespace Ch13
             numbers.Clear();
         }
 
+        public void Subtract()
+        {
+            int r = numbers.Dequeue();
+            foreach(int i in numbers)
+            {
+                r = r - i;
+            }
+            Result = r;
+
+            numbers.Clear();
+        }
+
+        public void Multiply()
+        {
+            int r = numbers.Dequeue();
+            foreach (int i in numbers)
+            {
+                r = r*i;
+            }
+            Result = r;
+
+            numbers.Clear();
+        }
+
         private int result;
         public int Result
         {
             get { return result; }
             set { SetField(ref result, value); }
         }
-               
+                       
         #region INotifyPropertyChanged Implementation
         public event PropertyChangedEventHandler PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)

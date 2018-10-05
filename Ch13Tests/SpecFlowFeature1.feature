@@ -14,3 +14,5 @@ Scenario: Add three numbers
 	Given I enter 25, 30, 42 and 67 into the calculator
 	When I press add
 	Then the result should be 164 on the screen
+
+
